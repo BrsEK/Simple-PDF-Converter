@@ -18,7 +18,7 @@ public class Controller {
     private URL location;
 
     @FXML
-    private ChoiceBox<?> choiceButton;
+    private ChoiceBox<String> choiceButton;
 
     @FXML
     private Button selectButton;
@@ -34,6 +34,16 @@ public class Controller {
 
     @FXML
     void initialize() {
+      fillChoiceBox();
+    }
 
+
+    private void fillChoiceBox(){
+        choiceButton.getItems().add(FormatName.PDF_TO_JPG.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_JPEG.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_PNG.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_HTML.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_DOCX.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_EXEL.getFormat());
     }
 }
