@@ -12,7 +12,7 @@
         <Label fx:id="labelForSelectButton" layoutX="192.0" layoutY="154.0" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: fff; -fx-background-radius: 00002;" />
         <Label fx:id="labelForPathButton" layoutX="192.0" layoutY="209.0" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: fff; -fx-background-radius: 00002;" />
         <ChoiceBox fx:id="choiceButton" layoutX="192.0" layoutY="84.0" prefHeight="26.0" prefWidth="211.0" />
-        <Button fx:id="selectButton" layoutX="27.0" layoutY="152.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-radius: 100030;" text="Select a file" textFill="#3c0a0a">
+        <Button fx:id="selectButton" layoutX="27.0" layoutY="152.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-radius: 100030;" text="Select a file" textFill="#3c0a0a" onAction="#selectButtonClick">
             <font>
                 <Font name="Droid Serif" size="15.0" />
             </font>
