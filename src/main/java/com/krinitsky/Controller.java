@@ -9,14 +9,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Controller {
 
     private static final String FILE_IS_MISSING = "File is missing";
+    private static final String PATH_IS_MISSING = "Path is missing";
 
     private File selectedFile;
+    private File pathToDirectory;
 
     @FXML
     private ResourceBundle resources;
@@ -43,6 +46,9 @@ public class Controller {
     private Label labelForSelectButton;
 
     @FXML
+    private Label labelForPathButton;
+
+    @FXML
     void initialize() {
       fillChoiceBox();
     }
@@ -57,6 +63,17 @@ public class Controller {
             labelForSelectButton.setText(selectedFile.getName());
         }else {
             labelForSelectButton.setText(FILE_IS_MISSING);
+        }
+    }
+
+    @FXML
+    private void pathButtonClick(ActionEvent actionEvent){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        pathToDirectory = directoryChooser.showDialog(new Stage());
+        if (pathToDirectory != null){
+            labelForPathButton.setText(pathToDirectory.getAbsolutePath());
+        }else {
+            labelForPathButton.setText(PATH_IS_MISSING);
         }
     }
 
