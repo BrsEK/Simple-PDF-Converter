@@ -57,4 +57,20 @@ public class ConverterPDF {
         output.close();
     }
 
+    /**
+     * Method convert pdf file to txt format
+     */
+    public void convertToText() throws IOException {
+        String parsedText;
+        PDFParser parser = new PDFParser(new RandomAccessFile(pdfFile, "r"));
+        parser.parse();
+        COSDocument cosDoc = parser.getDocument();
+        PDFTextStripper pdfStripper = new PDFTextStripper();
+        PDDocument pdDoc = new PDDocument(cosDoc);
+        parsedText = pdfStripper.getText(pdDoc);
+        PrintWriter pw = new PrintWriter(String.format("%s/%s%s",
+                pathToSave, pdfFile.getName().split(".pdf")[0], EXTENSION_TXT));
+        pw.print(parsedText);
+        pw.close();
+    }
 }

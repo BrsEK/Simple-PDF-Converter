@@ -115,6 +115,9 @@ public class Controller {
                 if (choiceButton.getValue().equals(FormatName.PDF_TO_HTML.getFormat())) {
                     converterPDF.convertToHTML();
                 }
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_TEXT.getFormat())) {
+                    converterPDF.convertToText();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
