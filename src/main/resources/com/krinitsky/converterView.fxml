@@ -7,39 +7,52 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="554.0" style="-fx-background-color: #33a67c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.krinitsky.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0"
+            prefWidth="554.0" style="-fx-background-color: #33a67c;" xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.krinitsky.Controller">
     <children>
-        <Label fx:id="labelForSelectButton" layoutX="192.0" layoutY="154.0" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: fff; -fx-background-radius: 00002;" />
-        <Label fx:id="labelForPathButton" layoutX="192.0" layoutY="209.0" prefHeight="30.0" prefWidth="211.0" style="-fx-background-color: fff; -fx-background-radius: 00002;" />
-        <ChoiceBox fx:id="choiceButton" layoutX="192.0" layoutY="84.0" prefHeight="26.0" prefWidth="211.0" />
-        <Button fx:id="selectButton" layoutX="27.0" layoutY="152.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-radius: 100030;" text="Select a file" textFill="#3c0a0a" onAction="#selectButtonClick">
+        <Label fx:id="labelForSelectButton" layoutX="192.0" layoutY="154.0" prefHeight="30.0" prefWidth="211.0"
+               style="-fx-background-color: fff; -fx-background-radius: 00002;"/>
+        <Label fx:id="labelForPathButton" layoutX="192.0" layoutY="209.0" prefHeight="30.0" prefWidth="211.0"
+               style="-fx-background-color: fff; -fx-background-radius: 00002;"/>
+        <ChoiceBox fx:id="choiceButton" layoutX="192.0" layoutY="84.0" prefHeight="26.0" prefWidth="211.0" onAction="#choiceButtonClick"/>
+        <Button fx:id="selectButton" layoutX="27.0" layoutY="152.0" mnemonicParsing="false" prefHeight="32.0"
+                prefWidth="150.0" style="-fx-background-radius: 100030;" text="Select a file" textFill="#3c0a0a"
+                onAction="#selectButtonClick">
             <font>
-                <Font name="Droid Serif" size="15.0" />
+                <Font name="Droid Serif" size="15.0"/>
             </font>
         </Button>
-        <Button fx:id="pathButton" layoutX="27.0" layoutY="208.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-radius: 100030;" text="Path to save" textFill="#3c0a0a" onAction="#pathButtonClick">
+        <Button fx:id="pathButton" layoutX="27.0" layoutY="208.0" mnemonicParsing="false" prefHeight="32.0"
+                prefWidth="150.0" style="-fx-background-radius: 100030;" text="Path to save" textFill="#3c0a0a"
+                onAction="#pathButtonClick">
             <font>
-                <Font name="Droid Serif" size="15.0" />
+                <Font name="Droid Serif" size="15.0"/>
             </font>
         </Button>
-        <Button fx:id="convertButton" layoutX="450.0" layoutY="157.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-radius: 500050;" text="Convert" textFill="#402f2f">
+        <Button fx:id="convertButton" layoutX="450.0" layoutY="157.0" mnemonicParsing="false" prefHeight="80.0"
+                prefWidth="80.0" style="-fx-background-radius: 500050;" text="Convert" textFill="#402f2f"
+                onAction="#convertButtonClick">
             <font>
-                <Font name="Cantarell Extra Bold" size="14.0" />
+                <Font name="Cantarell Extra Bold" size="14.0"/>
             </font>
         </Button>
-        <Text fill="#f8f7f7" layoutX="129.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simple PDF converter">
+        <Text fill="#f8f7f7" layoutX="129.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Simple PDF converter">
             <font>
-                <Font name="Appetite" size="30.0" />
+                <Font name="Appetite" size="30.0"/>
             </font>
         </Text>
-        <Text fill="#f2eaea" layoutX="46.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Convert to" wrappingWidth="120.21044921875">
+        <Text fill="#f2eaea" layoutX="46.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Convert to"
+              wrappingWidth="120.21044921875">
             <font>
-                <Font name="Droid Serif Bold" size="21.0" />
+                <Font name="Droid Serif Bold" size="21.0"/>
             </font>
         </Text>
-        <Text id="infoText" fill="#f8f7f7" layoutX="465.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
+        <Text id="infoText" fill="#f8f7f7" layoutX="465.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              visible="false">
             <font>
-                <Font size="19.0" />
+                <Font size="19.0"/>
             </font>
         </Text>
     </children>
