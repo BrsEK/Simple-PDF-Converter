@@ -26,8 +26,7 @@ public class Controller {
     private boolean isErrorFile;
     private boolean isErrorChoiceFormat;
     private static final String WRONG_FORMAT = "Wrong format";
-    private static final String EXTENSION_JPEG = ".jpeg";
-    private static final String EXTENSION_PNG = ".png";
+
 
     @FXML
     private ResourceBundle resources;
@@ -108,15 +107,14 @@ public class Controller {
             converterPDF = new ConverterPDF(pathToDirectory, selectedFile);
             try {
                 if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())) {
-                    converterPDF.convertToImg(EXTENSION_JPEG);
+                    converterPDF.convertToImg(ConverterPDF.EXTENSION_JPEG);
                 }
                 if (choiceButton.getValue().equals(FormatName.PDF_TO_PNG.getFormat())) {
-                    converterPDF.convertToImg(EXTENSION_PNG);
+                    converterPDF.convertToImg(ConverterPDF.EXTENSION_PNG);
                 }
                 if (choiceButton.getValue().equals(FormatName.PDF_TO_HTML.getFormat())) {
                     converterPDF.convertToHTML();
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,16 +1,17 @@
 package com.krinitsky;
 
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.io.RandomAccessFile;
+import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.fit.pdfdom.PDFDomTree;
 
@@ -18,6 +19,9 @@ public class ConverterPDF {
 
     private File pathToSave;
     private File pdfFile;
+    public final static String EXTENSION_TXT = ".txt";
+    public static final String EXTENSION_JPEG = ".jpeg";
+    public static final String EXTENSION_PNG = ".png";
 
     public ConverterPDF(File pathToSave, File pdfFile) {
         this.pathToSave = pathToSave;
