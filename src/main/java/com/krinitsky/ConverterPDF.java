@@ -7,8 +7,12 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
+import org.fit.pdfdom.PDFDomTree;
 
 public class ConverterPDF {
 
@@ -36,6 +40,18 @@ public class ConverterPDF {
                     String.format("%s/%s%s", pathToSave, pdfFile.getName().split(".pdf")[0], extension), 300);
         }
         document.close();
+    }
+
+    /**
+     * Method convert pdf file to html format
+     */
+    public void convertToHTML() throws IOException {
+        PDDocument pdf = PDDocument.load(pdfFile);
+        Writer output = new PrintWriter(String.format("%s/%s%s", pathToSave,
+                pdfFile.getName().split(".pdf")[0],
+                ".html"), StandardCharsets.UTF_8);
+        new PDFDomTree().writeText(pdf, output);
+        output.close();
     }
 
 }

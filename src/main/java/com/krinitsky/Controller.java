@@ -98,7 +98,7 @@ public class Controller {
     }
 
     @FXML
-    private void choiceButtonClick(ActionEvent actionEvent){
+    private void choiceButtonClick(ActionEvent actionEvent) {
         isErrorChoiceFormat = false;
     }
 
@@ -107,12 +107,16 @@ public class Controller {
         if (!isErrorFile & !isErrorPath & !isErrorChoiceFormat) {
             converterPDF = new ConverterPDF(pathToDirectory, selectedFile);
             try {
-                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())){
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())) {
                     converterPDF.convertToImg(EXTENSION_JPEG);
                 }
-                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())){
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_PNG.getFormat())) {
                     converterPDF.convertToImg(EXTENSION_PNG);
                 }
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_HTML.getFormat())) {
+                    converterPDF.convertToHTML();
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
