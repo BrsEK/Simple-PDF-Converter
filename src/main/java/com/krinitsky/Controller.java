@@ -26,7 +26,8 @@ public class Controller {
     private boolean isErrorFile;
     private boolean isErrorChoiceFormat;
     private static final String WRONG_FORMAT = "Wrong format";
-    private static final String EXTENSION_JPG = ".jpg";
+    private static final String EXTENSION_JPEG = ".jpeg";
+    private static final String EXTENSION_PNG = ".png";
 
     @FXML
     private ResourceBundle resources;
@@ -106,8 +107,11 @@ public class Controller {
         if (!isErrorFile & !isErrorPath & !isErrorChoiceFormat) {
             converterPDF = new ConverterPDF(pathToDirectory, selectedFile);
             try {
-                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPG.getFormat())) {
-                    converterPDF.convertToImg(EXTENSION_JPG);
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())){
+                    converterPDF.convertToImg(EXTENSION_JPEG);
+                }
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPEG.getFormat())){
+                    converterPDF.convertToImg(EXTENSION_PNG);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -117,7 +121,6 @@ public class Controller {
 
 
     private void fillChoiceBox() {
-        choiceButton.getItems().add(FormatName.PDF_TO_JPG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_JPEG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_PNG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_HTML.getFormat());
