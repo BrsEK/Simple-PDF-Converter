@@ -20,6 +20,8 @@ public class Controller {
 
     private File selectedFile;
     private File pathToDirectory;
+    private boolean isError;
+    private static final String WRONG_FORMAT = "Wrong format";
 
     @FXML
     private ResourceBundle resources;
@@ -60,8 +62,15 @@ public class Controller {
         Stage stage = new Stage();
         selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
-            labelForSelectButton.setText(selectedFile.getName());
+            if (selectedFile.getName().endsWith(".pdf")){
+                isError = false;
+                labelForSelectButton.setText(selectedFile.getName());
+            }else {
+                isError = true;
+                labelForSelectButton.setText(WRONG_FORMAT);
+            }
         }else {
+            isError = true;
             labelForSelectButton.setText(FILE_IS_MISSING);
         }
     }
@@ -71,8 +80,10 @@ public class Controller {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         pathToDirectory = directoryChooser.showDialog(new Stage());
         if (pathToDirectory != null){
+            isError = false;
             labelForPathButton.setText(pathToDirectory.getAbsolutePath());
         }else {
+            isError = true;
             labelForPathButton.setText(PATH_IS_MISSING);
         }
     }
