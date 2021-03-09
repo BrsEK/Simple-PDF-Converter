@@ -35,9 +35,8 @@ public class ConverterPDF {
         for (int page = 0; page < document.getNumberOfPages(); ++page) {
             BufferedImage bim = pdfRenderer.renderImageWithDPI(
                     page, 300, ImageType.RGB);
-            ImageIOUtil.writeImage(
-                    bim,
-                    String.format("%s/%s%s", pathToSave, pdfFile.getName().split(".pdf")[0], extension), 300);
+            ImageIOUtil.writeImage(bim, String.format("%s/%s%d%s",
+                    pathToSave, pdfFile.getName().split(".pdf")[0], page, extension), 300);
         }
         document.close();
     }
