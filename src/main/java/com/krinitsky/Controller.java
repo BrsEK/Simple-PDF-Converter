@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -121,6 +122,7 @@ public class Controller {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            showSuccessfulDialog();
         }
     }
 
@@ -130,6 +132,15 @@ public class Controller {
         choiceButton.getItems().add(FormatName.PDF_TO_PNG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_HTML.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_TEXT.getFormat());
+    }
+
+    private void showSuccessfulDialog() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("conversion was successful");
+
+        alert.showAndWait();
     }
 
 }
