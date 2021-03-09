@@ -71,6 +71,7 @@ public class ConverterPDF {
         PrintWriter pw = new PrintWriter(String.format("%s/%s%s",
                 pathToSave, pdfFile.getName().split(".pdf")[0], EXTENSION_TXT));
         pw.print(parsedText);
+        cosDoc.close();
         pw.close();
     }
 }
