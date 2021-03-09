@@ -128,8 +128,7 @@ public class Controller {
         choiceButton.getItems().add(FormatName.PDF_TO_JPEG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_PNG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_HTML.getFormat());
-        choiceButton.getItems().add(FormatName.PDF_TO_DOCX.getFormat());
-        choiceButton.getItems().add(FormatName.PDF_TO_EXEL.getFormat());
+        choiceButton.getItems().add(FormatName.PDF_TO_TEXT.getFormat());
     }
 
 }
