@@ -1,6 +1,7 @@
 package com.krinitsky;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,8 +21,12 @@ public class Controller {
 
     private File selectedFile;
     private File pathToDirectory;
-    private boolean isError;
+    private ConverterPDF converterPDF;
+    private boolean isErrorPath;
+    private boolean isErrorFile;
+    private boolean isErrorChoiceFormat;
     private static final String WRONG_FORMAT = "Wrong format";
+    private static final String EXTENSION_JPG = ".jpg";
 
     @FXML
     private ResourceBundle resources;
@@ -52,44 +57,66 @@ public class Controller {
 
     @FXML
     void initialize() {
-      fillChoiceBox();
+        isErrorPath = true;
+        isErrorFile = true;
+        isErrorChoiceFormat = true;
+        fillChoiceBox();
     }
 
     @FXML
-    private void selectButtonClick(ActionEvent actionEvent){
+    private void selectButtonClick(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         Stage stage = new Stage();
         selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
-            if (selectedFile.getName().endsWith(".pdf")){
-                isError = false;
+            if (selectedFile.getName().endsWith(".pdf")) {
+                isErrorFile = false;
                 labelForSelectButton.setText(selectedFile.getName());
-            }else {
-                isError = true;
+            } else {
+                isErrorFile = true;
                 labelForSelectButton.setText(WRONG_FORMAT);
             }
-        }else {
-            isError = true;
+        } else {
+            isErrorFile = true;
             labelForSelectButton.setText(FILE_IS_MISSING);
         }
     }
 
     @FXML
-    private void pathButtonClick(ActionEvent actionEvent){
+    private void pathButtonClick(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         pathToDirectory = directoryChooser.showDialog(new Stage());
-        if (pathToDirectory != null){
-            isError = false;
+        if (pathToDirectory != null) {
+            isErrorPath = false;
             labelForPathButton.setText(pathToDirectory.getAbsolutePath());
-        }else {
-            isError = true;
+        } else {
+            isErrorPath = true;
             labelForPathButton.setText(PATH_IS_MISSING);
         }
     }
 
+    @FXML
+    private void choiceButtonClick(ActionEvent actionEvent){
+        isErrorChoiceFormat = false;
+    }
 
-    private void fillChoiceBox(){
+    @FXML
+    private void convertButtonClick(ActionEvent actionEvent) {
+        if (!isErrorFile & !isErrorPath & !isErrorChoiceFormat) {
+            converterPDF = new ConverterPDF(pathToDirectory, selectedFile);
+            try {
+                if (choiceButton.getValue().equals(FormatName.PDF_TO_JPG.getFormat())) {
+                    converterPDF.convertToImg(EXTENSION_JPG);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private void fillChoiceBox() {
         choiceButton.getItems().add(FormatName.PDF_TO_JPG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_JPEG.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_PNG.getFormat());
@@ -97,4 +124,5 @@ public class Controller {
         choiceButton.getItems().add(FormatName.PDF_TO_DOCX.getFormat());
         choiceButton.getItems().add(FormatName.PDF_TO_EXEL.getFormat());
     }
+
 }
