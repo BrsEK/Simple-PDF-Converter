@@ -30,25 +30,7 @@ public class Controller {
 
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private ChoiceBox<String> choiceButton;
-
-    @FXML
-    private Button selectButton;
-
-    @FXML
-    private Button pathButton;
-
-    @FXML
-    private Button convertButton;
-
-    @FXML
-    private Label labelInfo;
 
     @FXML
     private Label labelForSelectButton;
@@ -139,7 +121,6 @@ public class Controller {
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
         alert.setContentText("conversion was successful");
-
         alert.showAndWait();
     }
 
